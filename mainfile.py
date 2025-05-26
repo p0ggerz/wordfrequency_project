@@ -18,12 +18,22 @@ def convert_token_objects_to_lowercase(token_objects):
 def lemmatize_tokens(token_objects):
     return [token.lemma_ for token in token_objects]
 
+def count_frequency(items):
+    return {item: items.count(item) for item in items}
+
+def sort_freq_dct(freq):
+    wordfreq_lst = list(freq.items())
+    wordfreq_lst_sorted = sorted(wordfreq_lst, key=lambda x: (-x[1], x[0]))
+    return wordfreq_lst_sorted
+
 
 all_tokens = get_all_tokens(doc)
 token_objects = filter_token_objects(doc)
 filtered_tokens = convert_token_objects_to_lowercase(token_objects)
 lemmas = lemmatize_tokens(token_objects)
+freq = count_frequency(lemmas)
 
 print("Все токены:", get_all_tokens(doc))
 print("Токены без стоп-слов (нижний регистр):", filtered_tokens)
 print("Леммы:", lemmas)
+print("Частотность слов:", freq)
