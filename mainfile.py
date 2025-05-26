@@ -32,6 +32,12 @@ token_objects = filter_token_objects(doc)
 filtered_tokens = convert_token_objects_to_lowercase(token_objects)
 lemmas = lemmatize_tokens(token_objects)
 freq = count_frequency(lemmas)
+wordfreq_sorted = sort_freq_dct(freq)
+
+n = int(input("Введите количество слов для подсчета их частотности: "))
+print(f"Топ-{n} частотных слов:")
+for lemma, count in wordfreq_sorted[:n]:
+    print(f"{lemma}: {count} раз(а)")
 
 print("Все токены:", get_all_tokens(doc))
 print("Токены без стоп-слов (нижний регистр):", filtered_tokens)
