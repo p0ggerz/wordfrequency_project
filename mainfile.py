@@ -15,10 +15,15 @@ def filter_token_objects(doc):
 def convert_token_objects_to_lowercase(token_objects):
     return [token.lower_ for token in token_objects]
 
+def lemmatize_tokens(token_objects):
+    return [token.lemma_ for token in token_objects]
+
 
 all_tokens = get_all_tokens(doc)
 token_objects = filter_token_objects(doc)
 filtered_tokens = convert_token_objects_to_lowercase(token_objects)
+lemmas = lemmatize_tokens(token_objects)
 
 print("Все токены:", get_all_tokens(doc))
 print("Токены без стоп-слов (нижний регистр):", filtered_tokens)
+print("Леммы:", lemmas)
