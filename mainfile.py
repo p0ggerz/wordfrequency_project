@@ -5,7 +5,6 @@ with open("kustsireni.txt", encoding="utf-8") as f:
     text = f.read()
 
 doc = nlp(text)
-
 def get_all_tokens(doc):
     return [token.text for token in doc]
 
@@ -39,7 +38,8 @@ print(f"Топ-{n} частотных слов:")
 for lemma, count in wordfreq_sorted[:n]:
     print(f"{lemma}: {count} раз(а)")
 
-print("Все токены:", get_all_tokens(doc))
+print("Все токены:", all_tokens)
 print("Токены без стоп-слов (нижний регистр):", filtered_tokens)
 print("Леммы:", lemmas)
 print("Частотность слов:", freq)
+print("Отсортированные по частотности слова:", wordfreq_sorted)
